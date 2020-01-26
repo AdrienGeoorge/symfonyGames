@@ -6,12 +6,18 @@ use App\Entity\Editor;
 use App\Form\EditorType;
 use App\Repository\EditorRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class EditorController
+ * @package App\Controller
+ * @IsGranted("ROLE_USER")
+ */
 class EditorController extends AbstractController
 {
     private $em;
@@ -52,6 +58,7 @@ class EditorController extends AbstractController
      * @Route("/editor/new", name="editor_new")
      * @param Request $request
      * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function addEditor(Request $request): Response
     {
@@ -78,6 +85,7 @@ class EditorController extends AbstractController
      * @param Request $request
      * @param Editor $editor
      * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function editEditor(Request $request, Editor $editor): Response
     {
@@ -101,6 +109,7 @@ class EditorController extends AbstractController
      * @ParamConverter("editor", options={"id"="id"})
      * @param Editor $editor
      * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteEditor(Editor $editor): Response
     {
