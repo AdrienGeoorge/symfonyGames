@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    {% for game in games %}
+        {{ game.title }}
+        {{ game.description }}
+        {{ game.releaseDate|date('d-m-Y') }}
+        {{ game.editor.buisnessName }}
+    {% endfor %}
+{% endblock %}
