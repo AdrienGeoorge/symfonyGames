@@ -29,7 +29,7 @@ class Editor
     private $nationality;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="editor")
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="editor", cascade={"detach", "persist"})
      */
     private $games;
 
