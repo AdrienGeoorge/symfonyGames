@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game Controller{% endblock %}
+
+{% block body %}
+    {% for game in games %}
+        {{ game.title }}
+        {{ game.description}}
+        {{ game.releaseDate |date('d m Y') }}
+        {{ game.editor.buisnessName }}
+        <a href="{{ path('game_infos', {'id': game.id}) }}">More infos</a>
+        <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
+        <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
+    {% endfor %}
+    <a href="{{ path('game_new') }}">Add new game</a>
+{% endblock %}
