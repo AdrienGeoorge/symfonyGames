@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class Game
      * @ORM\ManyToOne(targetEntity="App\Entity\Editor", inversedBy="games")
      */
     private $editor;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Support", inversedBy="games")
+     */
+    private $support;
+
+    public function __construct()
+    {
+        $this->support = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +97,32 @@ class Game
     public function setEditor(?Editor $editor): self
     {
         $this->editor = $editor;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Support[]
+     */
+    public function getSupport(): Collection
+    {
+        return $this->support;
+    }
+
+    public function addSupport(Support $support): self
+    {
+        if (!$this->support->contains($support)) {
+            $this->support[] = $support;
+        }
+
+        return $this;
+    }
+
+    public function removeSupport(Support $support): self
+    {
+        if ($this->support->contains($support)) {
+            $this->support->removeElement($support);
+        }
 
         return $this;
     }
