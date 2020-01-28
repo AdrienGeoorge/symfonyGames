@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SupportController!{% endblock %}
+
+{% block body %}
+    {% for support in supports %}
+        {{ support.name }}
+        {{ support.maker }}
+
+        <a href="{{ path('support_edit', {'id': support.id}) }}">Edit</a>
+        <a href="{{ path('support_delete', {'id': support.id}) }}">Delete</a>
+    {% endfor %}
+
+    <a href="{{ path('support_new') }}">Add new support</a>
+{% endblock %}
