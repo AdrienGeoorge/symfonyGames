@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EditorRepository")
@@ -20,11 +21,15 @@ class Editor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="You must enter an business name.")
+     * @Assert\Length(min="2", minMessage="Business name must be at least {{ limit }} characters long")
      */
     private $buisnessName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="You must enter an nationality.")
+     * @Assert\Length(min="2", minMessage="Nationality must be at least {{ limit }} characters long.")
      */
     private $nationality;
 

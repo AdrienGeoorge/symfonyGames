@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SupportRepository")
@@ -20,11 +21,13 @@ class Support
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="2", minMessage="Support name must be at least {{ limit }} characters long")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min="2", minMessage="Support maker must be at least {{ limit }} characters long")
      */
     private $maker;
 
