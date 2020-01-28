@@ -5,11 +5,13 @@
 	use App\Entity\Editor;
 	use App\Entity\Game;
 
-	use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+    use Doctrine\ORM\EntityRepository;
+    use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\Extension\Core\Type\DateType;
 	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-	use Symfony\Component\Form\Extension\Core\Type\TextType;
+    use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+    use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\FormBuilderInterface;
 	use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +22,7 @@
 		{
 			$builder
 				->add('title', TextType::class)
-				->add('description', TextType::class)
+				->add('description', TextareaType::class)
 				->add('releaseDate', DateType::class, [
 					'widget' => 'choice',
 					'format' => 'dMy',
@@ -32,6 +34,13 @@
 						return $editor->getBuisnessName();
 					}
 				])
+                ->add('support', EntityType::class, [
+                    'class'        => 'App:Support',
+                    'choice_label' => 'name',
+                    'label'        => 'What console can we play on?',
+                    'expanded'     => true,
+                    'multiple'     => true,
+                ])
 				->add('submit', SubmitType::class);
 		}
 
