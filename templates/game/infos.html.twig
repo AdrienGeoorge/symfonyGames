@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+{% block body %}
+    {{ game.title }}
+    {{ game.description }}
+    {{ game.releaseDate|date('d-m-Y') }}
+    {{ game.editor.buisnessName }}
+    {{ game.editor.nationality }}
+    <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
+    <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
+{% endblock %}
