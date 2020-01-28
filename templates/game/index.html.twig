@@ -5,7 +5,6 @@
 {% block body %}
     {% for game in games %}
         {{ game.title }}
-        {{ game.description}}
         {{ game.releaseDate |date('d m Y') }}
         {{ game.editor.buisnessName }}
         <a href="{{ path('game_infos', {'id': game.id}) }}">More infos</a>

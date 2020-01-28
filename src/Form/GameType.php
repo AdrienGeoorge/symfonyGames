@@ -22,9 +22,9 @@
 				->add('title', TextType::class)
 				->add('description', TextType::class)
 				->add('releaseDate', DateType::class, [
-					'widget' => 'single_text',
-					// this is actually the default format for single_text
-					'format' => 'yyyy-MM-dd',
+					'widget' => 'choice',
+					'format' => 'dMy',
+                    'years' => range(date('Y'), date('Y') - 50)
 				])
 				->add('editor', EntityType::class, [
 					'class' => Editor::class,

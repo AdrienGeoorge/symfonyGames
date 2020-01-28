@@ -2,13 +2,11 @@
 
 {% block title %}Hello GameController!{% endblock %}
 {% block body %}
-    {% for game in games %}
-        {{ game.title }}
-        {{ game.description }}
-        {{ game.releaseDate|date('d-m-Y') }}
-        {{ game.editor}}
-        <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
-        <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
-    {% endfor %}
-
+    {{ game.title }}
+    {{ game.description }}
+    {{ game.releaseDate|date('d-m-Y') }}
+    {{ game.editor.buisnessName }}
+    {{ game.editor.nationality }}
+    <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
+    <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
 {% endblock %}
