@@ -8,8 +8,14 @@
         {{ game.releaseDate |date('d m Y') }}
         {{ game.editor.buisnessName }}
         <a href="{{ path('game_infos', {'id': game.id}) }}">More infos</a>
-        <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
-        <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
+            <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
+        {% endif %}
     {% endfor %}
-    <a href="{{ path('game_new') }}">Add new game</a>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('game_new') }}">Add new game</a>
+    {% endif %}
 {% endblock %}

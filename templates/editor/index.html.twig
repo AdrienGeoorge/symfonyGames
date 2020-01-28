@@ -6,9 +6,15 @@
     {% for editor in editors %}
         {{ editor.buisnessName }}
         {{ editor.nationality }}
-        <a href="{{ path('editor_infos', {'id': editor.id}) }}">More infos</a>
-        <a href="{{ path('editor_edit', {'id': editor.id}) }}">Edit</a>
-        <a href="{{ path('editor_delete', {'id': editor.id}) }}">Delete</a>
+
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('editor_infos', {'id': editor.id}) }}">More infos</a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('editor_edit', {'id': editor.id}) }}">Edit</a>
+            <a href="{{ path('editor_delete', {'id': editor.id}) }}">Delete</a>
+        {% endif %}
     {% endfor %}
 
     <a href="{{ path('editor_new') }}">Add new editor</a>
