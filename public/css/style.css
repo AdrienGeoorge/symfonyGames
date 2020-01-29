@@ -31,3 +31,7 @@ a, a:hover{
     display: inline-block;
     margin-bottom: 5px;
 }
+
+.birth-input{
+    margin-top: -6px;
+}

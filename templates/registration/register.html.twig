@@ -1,36 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-{% endblock %}
+
 {% block body %}
     <h1>Sign in</h1>
 
-
     <div class="box p-4 mt-3">
         <form method="post">
-            <div class="row">
-                <div class="col">
+            <div class="form-row">
+                <div class="form-group col-md-6">
                     {{ form_row(registrationForm.email) }}
                 </div>
-                <div class="col">
+                <div class="form-group col-md-6">
                     {{ form_row(registrationForm.firstname) }}
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
                     {{ form_row(registrationForm.lastname) }}
+                </div>
+                <div class="form-group col-md-6 birth-input">
                     {{ form_row(registrationForm.birthdate) }}
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col">
-                    {{ form_row(registrationForm.password) }}
-                    {{ form_row(registrationForm.agreeTerms) }}
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form_row(registrationForm.password.first) }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form_row(registrationForm.password.second) }}
                 </div>
             </div>
-            <button class="btn">Register</button>
+            <button class="btn btn-secondary">Register</button>
         </form>
     </div>
 {% endblock %}
