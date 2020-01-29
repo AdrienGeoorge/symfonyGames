@@ -25,15 +25,9 @@ class RegistrationFormType extends AbstractType
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
             ->add('birthdate', DateType::class, [
+                'widget' => 'choice',
+                'format' => 'dMy',
                 'years' => range(date('Y'), date('Y') - 75)
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
             ])
             ->add('password', RepeatedType::class, [
                 // instead of being set onto the object directly,

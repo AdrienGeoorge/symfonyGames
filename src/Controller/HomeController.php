@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     public function index(GameRepository $gameRepository)
     {
         $games = $gameRepository->findAll();
-
+		//pourquoi ne pas utiliser le  game/index.html.twig
         return $this->render('home/index.html.twig', [
             'games' => $games,
         ]);
