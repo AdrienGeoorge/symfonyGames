@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Game Controller{% endblock %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+{% endblock %}
 {% block body %}
-    {% for game in games %}
-        {{ game.title }}
-        {{ game.releaseDate |date('d m Y') }}
-        {{ game.editor.buisnessName }}
-        <a href="{{ path('game_infos', {'id': game.id}) }}">More infos</a>
-
+    <h1>Game</h1>
+    <div class="grid-3">
+        {% for game in games %}
+            <div class="img" style="background-image: url(https://i.picsum.photos/id/157/605/400.jpg);"></div>
+            <h6>{{ game.title }}</h6>
+            {{ game.releaseDate |date('d/m/Y') }}
+            {{ game.editor.buisnessName }}
+            <a href="{{ path('game_infos', {'id': game.id}) }}">More infos</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
+                <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
+            {% endif %}
+        {% endfor %}
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
-            <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
+            <a href="{{ path('game_new') }}">Add new game</a>
         {% endif %}
-    {% endfor %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('game_new') }}">Add new game</a>
-    {% endif %}
+    </div>
 {% endblock %}
