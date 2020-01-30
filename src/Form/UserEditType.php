@@ -22,7 +22,6 @@ class UserEditType extends AbstractType
 				'years' => range(date('Y'), date('Y') - 75)
 			]);
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

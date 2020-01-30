@@ -16,9 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class UserController
  * @package App\Controller
- * @Route("/settings", name="settings")
+ * @IsGranted("ROLE_USER")
+ * @Route("/admin", name="admin")
  */
-class UserController extends AbstractController
+class AdminController extends AbstractController
 {
 
 	private $em;
@@ -48,7 +49,7 @@ class UserController extends AbstractController
 	 * @param User $User
 	 * @return Response
 	 */
-	public function editEditor(Request $request, User $User): Response
+	public function editUser(Request $request, User $User): Response
 	{
 		$form = $this->createForm(UserEditType::class, $User);
 		$form->handleRequest($request);
@@ -63,14 +64,32 @@ class UserController extends AbstractController
 		]);
 	}
 	/**
-	 * @Route("/user/delete/{id}", name="user_delete")
-	 * @ParamConverter("editor", options={"id"="id"})
-	 * @param User $editor
+	 * @Route("/user/edit/{id}", name="user_edit")
+	 * @ParamConverter("user", options={"id"="id"})
+	 * @param Request $request
+	 * @param User $User
 	 * @return Response
 	 */
-	public function deleteEditor(User $editor): Response
+	public function insertUser(Request $request, User $User): Response
 	{
-		$this->em->remove($editor);
+		$form = $this->createForm(UserEditType::class, $User);
+		$form->handleRequest($request);
+		if($form->isSubmitted() && $form->isValid()){
+			$this->em->persist($User);
+			$this->em->flush();
+			$this->addFlash('success', 'User updated.');
+		}
+		return $this->render('user/form.html.twig');
+	}
+	/**
+	 * @Route("/user/delete/{id}", name="user_delete")
+	 * @ParamConverter("user", options={"id"="id"})
+	 * @param User $User
+	 * @return Response
+	 */
+	public function deleteUser(User $User): Response
+	{
+		$this->em->remove($User);
 		$this->em->flush();
 		$this->addFlash('success', 'User deleted.');
 
