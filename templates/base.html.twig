@@ -27,6 +27,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path("support_list") }}">Support</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path("list_user") }}">User settings </a>
+                                <!--chez pas comment je dois mettre ici soit "settings/user_edit" ou "user/edit" mais ca fontionne pas -->
+                            </li>
                         {% endif %}
                         {% if is_granted("ROLE_USER")%}
                             <li class="nav-item">

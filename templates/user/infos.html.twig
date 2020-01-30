@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello user settings area{% endblock %}
+
+{% block body %}
+    {% for user in users %}
+        {{ user.id }}
+        {{ user.email }}
+        {{ user.firstname}}
+        {{ user.lastname}}
+        {{ user.birthDate }}
+        {{  user.creationDate }}
+    {% endfor %}
+{% endblock %}
+
+
