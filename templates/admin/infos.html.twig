@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello user settings area{% endblock %}
+
+{% block body %}
+    {% for user in users %}
+        {{ user.id }}
+        {{ user.email }}
+        {{ user.firstname}}
+        {{ user.lastname}}
+        {{ user.birthDate|date('d-m-Y') }}
+        {{ user.creationDate|date('d-m-Y') }}
+        <a href="{{ path('admin_user_edit', {'id': user.id}) }}">Edit</a>
+        <a href="{{ path('admin_user_delete', {'id': user.id}) }}">Delete</a>
+    {% endfor %}
+    <a href="{{ path('admin_user_add') }}">Add new user</a>
+{% endblock %}
+
+
