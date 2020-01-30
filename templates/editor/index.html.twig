@@ -17,6 +17,8 @@
         {% endif %}
     {% endfor %}
 
-    <a href="{{ path('editor_new') }}">Add new editor</a>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{ path('editor_new') }}">Add new editor</a>
+    {% endif %}
 
 {% endblock %}
