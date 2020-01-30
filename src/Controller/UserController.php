@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class UserController
  * @package App\Controller
- * @IsGranted("ROLE_USER")
+ * @IsGranted("ROLE_ADMIN")
  * @Route("/admin", name="admin")
  */
 class AdminController extends AbstractController
@@ -49,14 +49,14 @@ class AdminController extends AbstractController
 	 * @param User $User
 	 * @return Response
 	 */
-	public function editUser(Request $request, User $User): Response
+	public function editUser(Request $request, User $User, UserPasswordEncoderInterface $passwordEncoder): Response
 	{
-		$form = $this->createForm(UserEditType::class, $User);
+		$form = $this->createForm(RegistrationFormType::class, $User);
 		$form->handleRequest($request);
 		if($form->isSubmitted() && $form->isValid()){
+			$passwordEncoder->encodePassword( $User, $form->get('password')->getData());
 			$this->em->persist($User);
 			$this->em->flush();
-
 			$this->addFlash('success', 'User updated.');
 		}
 		return $this->render('user/form.html.twig', [

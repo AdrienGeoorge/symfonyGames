@@ -13,6 +13,7 @@ class UserEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+			->add('email', TextType::class)
             ->add('roles', TextType::class)
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
@@ -20,7 +21,8 @@ class UserEditType extends AbstractType
 				'widget' => 'choice',
 				'format' => 'dMy',
 				'years' => range(date('Y'), date('Y') - 75)
-			]);
+			])
+			->add('password', TextType::class);
     }
     public function configureOptions(OptionsResolver $resolver)
     {
