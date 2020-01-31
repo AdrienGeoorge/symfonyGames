@@ -27,6 +27,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path("editor_list") }}">Editor</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path("user_user_edit") }}">User settings </a>
+                            </li>
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
                             <li class="nav-item">
