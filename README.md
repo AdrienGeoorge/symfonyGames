@@ -1,3 +1,14 @@
+# symfonyGames
+
+## Cloning the repository
+
+Clone this project into your working directory. We recommend always running the master branch as it was frequent contributions.
+
+```bash
+$ git clone git@github.com:AdrienGeoorge/symfonyGames.git
+
+Cloning into 'social-network'...
+remote: Counting objects: 4794, done.
 remote: Total 4794 (delta 0), reused 0 (delta 0)
 Receiving objects: 100% (4794/4794), 1.59 MiB | 10.37 MiB/s, done.
 Resolving deltas: 100% (2314/2314), done.
