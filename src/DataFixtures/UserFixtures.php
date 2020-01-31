@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -11,10 +12,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserFixtures extends Fixture
 {
     private $passwordEncoder;
+    private $manager;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $manager)
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->manager = $manager;
     }
 
     private function createAdmin(): void
@@ -30,6 +33,8 @@ class UserFixtures extends Fixture
             $admin,
             'password'
         ));
+
+        $this->manager->persist($admin);
     }
 
     public function load(ObjectManager $manager)
