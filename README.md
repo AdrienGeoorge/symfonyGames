@@ -26,5 +26,5 @@ $ mv .env.test .env
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## AUTHORS
-* [Geoorge Adrien](https://github.com/AdrienGeaoorge)
+* [Geoorge Adrien](https://github.com/AdrienGeoorge)
 * [Buyuk Cem](https://github.com/BuyukCem)
