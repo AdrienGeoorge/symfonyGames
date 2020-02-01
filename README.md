@@ -17,10 +17,13 @@ Checking connectivity... done.
 ```
 ## Docker
 This project is very easy ton install in a Docker container
-By default, the apache docker will expose port in 8010, so change this with in docker-compose.yml if necessary and rename the conf file .env.test  to .env.
-When ready
+By default, the apache docker will expose port in 8010, so change this with in docker-compose.yml and here are the steps to follow, When ready
 ```bash
 $ mv .env.test .env
+$ docker-compose up --build
+$ docker-compose exec web php bin/console doctrine:database:creeate
+$ docker-compose exec web php bin/consol doctrine:migration:migrate
+$ docker-compose exec web php bin/consol doctrine:fixture:load 
 ```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
