@@ -29,6 +29,7 @@
                     'years' => range(date('Y'), date('Y') - 50)
 				])
 				->add('editor', EntityType::class, [
+				    'placeholder' => 'Choose an option',
 					'class' => Editor::class,
 					'choice_label' => function (Editor $editor) {
 						return $editor->getBuisnessName();
