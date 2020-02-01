@@ -16,7 +16,9 @@ class EditorType extends AbstractType
         $builder
             ->add('buisnessName', TextType::class)
             ->add('nationality', TextType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => ['class' => 'btn-secondary']
+            ])
         ;
     }
 

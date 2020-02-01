@@ -3,12 +3,6 @@ a, a:hover{
     color: black;
 }
 
-.grid-3{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 15px;
-}
-
 .box{
     background-color: #ecf0f1;
     border-radius: 5px;

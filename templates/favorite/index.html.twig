@@ -3,9 +3,13 @@
 {% block title %}Hello FavoriteController!{% endblock %}
 
 {% block body %}
-    {% for favorite in favorites %}
-        {{ favorite.title }}
-        {{ favorite.description }}
-        <a href="{{ path('favorite_remove', {'id': favorite.id}) }}">Remove favorite</a>
-    {% endfor %}
+    <div class="grid-3">
+        {% for favorite in favorites %}
+            <div class="box">
+                <h5>{{ favorite.title }}</h5>
+                <a href="{{ path('game_infos', {'id': favorite.id}) }}" class="btn btn-primary">More infos</a>
+                <a href="{{ path('favorite_remove', {'id': favorite.id}) }}" class="btn btn-danger">Remove favorite</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
