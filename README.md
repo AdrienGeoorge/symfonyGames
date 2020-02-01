@@ -31,3 +31,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## AUTHORS
 * [Geoorge Adrien](https://github.com/AdrienGeoorge)
 * [Buyuk Cem](https://github.com/BuyukCem)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
