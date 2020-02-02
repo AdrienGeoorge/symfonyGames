@@ -9,7 +9,7 @@
             <div class="box">
                 <h5>{{ game.title }}</h5>
                 <h6>Released on {{ game.releaseDate |date('d/m/Y') }}</h6>
-                <p>Editor : {{ game.editor.buisnessName }}</p>
+                <p>Editor : {{ game.editor ? game.editor.buisnessName : 'Not specified' }}</p>
 
                 <a href="{{ path('game_infos', {'id': game.id}) }}" class="btn btn-primary">More infos</a>
 

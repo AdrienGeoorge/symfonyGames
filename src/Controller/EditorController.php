@@ -113,6 +113,10 @@ class EditorController extends AbstractController
      */
     public function deleteEditor(Editor $editor): Response
     {
+        foreach($editor->getGames() as $game) {
+            $editor->removeGame($game);
+        }
+
         $this->em->remove($editor);
         $this->em->flush();
 
