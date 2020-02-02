@@ -8,7 +8,7 @@ Clone this project into your working directory. We recommend always running the 
 ```bash
 $ git clone git@github.com:AdrienGeoorge/symfonyGames.git
 
-Cloning into 'social-network'...
+Cloning into 'symfonyGames'...
 remote: Counting objects: 4794, done.
 remote: Total 4794 (delta 0), reused 0 (delta 0)
 Receiving objects: 100% (4794/4794), 1.59 MiB | 10.37 MiB/s, done.
@@ -22,14 +22,14 @@ By default, the apache docker will expose port in 8010, so change this with in d
 ```bash
 $ mv .env.test .env
   docker-compose up --build 
-  docker-compose exec web php bin/console doctrine:database:creeate
+  docker-compose exec web php bin/console doctrine:database:create
   docker-compose exec web php bin/console doctrine:migration:migrate
-  docker-compose exec web php bin/console doctrine:fixture:load 
+  docker-compose exec web php bin/console doctrine:fixtures:load 
 ```
 ### Quick start
-Create Admin user with symfony command in you Docker
+Create Admin user with symfony command in your Docker
 ```
-$ docker-compose exec web php bin/console App:CreateAdminUserCommand admin@email.com adminFirstname adminLastname AdminPassword
+$ docker-compose exec web php bin/console App:CreateAdminUserCommand admin@email.com AdminPassword adminFirstname adminLastname
 
 ```
 
