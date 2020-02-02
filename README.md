@@ -1,6 +1,7 @@
 # symfonyGames
 
-## Cloning the repository
+## Installation
+### Cloning the repository
 
 Clone this project into your working directory. We recommend always running the master branch as it was frequent contributions.
 
@@ -15,7 +16,7 @@ Resolving deltas: 100% (2314/2314), done.
 Checking connectivity... done.
 
 ```
-## Docker
+### Docker
 This project is very easy ton install in a Docker container
 By default, the apache docker will expose port in 8010, so change this with in docker-compose.yml and here are the steps to follow, When ready
 ```bash
@@ -25,6 +26,13 @@ $ mv .env.test .env
   docker-compose exec web php bin/console doctrine:migration:migrate
   docker-compose exec web php bin/console doctrine:fixture:load 
 ```
+### Quick start
+Create Admin user with symfony command in you Docker
+```
+$ docker-compose exec web php bin/console App:CreateAdminUserCommand admin@email.com adminFirstname adminLastname AdminPassword
+
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
