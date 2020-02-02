@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EditorController!{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h5>{{ editor.buisnessName }}</h5>
+        <h6>Made in {{ editor.nationality }}</h6>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('editor_edit', {'id': editor.id}) }}" class="btn btn-secondary">Edit</a>
+            <a href="{{ path('editor_delete', {'id': editor.id}) }}" class="btn btn-danger">Delete</a>
+        {% endif %}
+    </div>
+
+    <h1>List of games</h1>
+    {% if editor.games is empty %}
+        <h2>No game</h2>
+    {% else %}
+        <div class="grid-3">
+            {% for game in editor.games %}
+                <div class="box">
+                    <h5>{{ game.title }}</h5>
+                    <p>Released on {{ game.releaseDate|date('d-m-Y') }}</p>
+                    <p>{{ game.description }}</p>
+
+                    <a href="{{ path('game_infos', {'id': game.id}) }}" class="btn btn-primary">More infos</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

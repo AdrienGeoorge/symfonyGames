@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SupportController!{% endblock %}
+
+{% block body %}
+    <h1>Supports</h1>
+    <div class="grid-3">
+        {% for support in supports %}
+            <div class="box">
+                <h5>{{ support.name }}</h5>
+                <h6>Make by {{ support.maker }}</h6>
+
+                <a href="{{ path('support_edit', {'id': support.id}) }}" class="btn btn-secondary">Edit</a>
+                <a href="{{ path('support_delete', {'id': support.id}) }}" class="btn btn-danger">Delete</a>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{{ path('support_new') }}" class="btn btn-dark">Add new support</a>
+    </div>
+{% endblock %}

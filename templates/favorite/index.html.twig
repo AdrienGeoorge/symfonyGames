@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FavoriteController!{% endblock %}
+
+{% block body %}
+    <div class="grid-3">
+        {% for favorite in favorites %}
+            <div class="box">
+                <h5>{{ favorite.title }}</h5>
+                <a href="{{ path('game_infos', {'id': favorite.id}) }}" class="btn btn-primary">More infos</a>
+                <a href="{{ path('favorite_remove', {'id': favorite.id}) }}" class="btn btn-danger">Remove favorite</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

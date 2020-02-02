@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+{% block body %}
+    <h1>{{ game.title }}</h1>
+    <h5>Released on {{ game.releaseDate|date('d-m-Y') }}</h5>
+
+    <div class="jumbotron">
+        <p>{{ game.description }}</p>
+        {% if game.editor %}
+            <h6>Developed by {{ game.editor.buisnessName }} ({{ game.editor.nationality }})</h6>
+        {% else %}
+            <h6>Editor not specified</h6>
+        {% endif %}
+
+        {% if is_granted("ROLE_USER") %}
+            <a href="{{ path('favorite_add', {'id': game.id}) }}" class="btn btn-primary">Add to favorite</a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('game_edit', {'id': game.id}) }}" class="btn btn-secondary">Edit</a>
+            <a href="{{ path('game_delete', {'id': game.id}) }}" class="btn btn-danger">Delete</a>
+        {% endif %}
+    </div>
+{% endblock %}

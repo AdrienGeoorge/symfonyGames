@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello user settings area{% endblock %}
+
+{% block body %}
+    <h1>List of users</h1>
+    <div class="grid-3">
+        {% for user in users %}
+            <div class="box">
+                <h5>{{ user.firstname }} {{ user.lastname|upper }}</h5>
+                <p>Mail : {{ user.email }}</p>
+                <p>Birthdate {{ user.birthDate|date('d-m-Y') }}</p>
+                <p>Created on {{ user.creationDate|date('d-m-Y') }}</p>
+
+                <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="btn btn-secondary">Edit</a>
+                <a href="{{ path('admin_user_delete', {'id': user.id}) }}" class="btn btn-danger">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{{ path('admin_user_add') }}" class="btn btn-dark">Add new user</a>
+    </div>
+{% endblock %}
+
+
