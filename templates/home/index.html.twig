@@ -1,21 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home Controller{% endblock %}
 
 {% block body %}
-    {% for game in games %}
-        {{ game.title }}
-        {{ game.releaseDate |date('d m Y') }}
-        {{ game.editor.buisnessName }}
-        <a href="{{ path('game_infos', {'id': game.id}) }}">More infos</a>
+    <h1>Games</h1>
+    <div class="grid-3">
+        {% for game in games %}
+            <div class="box">
+                <h5>{{ game.title }}</h5>
+                <h6>Released on {{ game.releaseDate |date('d/m/Y') }}</h6>
+                <p>Editor : {{ game.editor.buisnessName }}</p>
 
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('game_edit', {'id': game.id}) }}">Edit</a>
-            <a href="{{ path('game_delete', {'id': game.id}) }}">Delete</a>
-        {% endif %}
-    {% endfor %}
+                <a href="{{ path('game_infos', {'id': game.id}) }}" class="btn btn-primary">More infos</a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('game_edit', {'id': game.id}) }}" class="btn btn-secondary">Edit</a>
+                    <a href="{{ path('game_delete', {'id': game.id}) }}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('game_new') }}">Add new game</a>
+        <div class="text-center mt-3">
+            <a href="{{ path('game_new') }}" class="btn btn-dark">Add new game</a>
+        </div>
     {% endif %}
 {% endblock %}

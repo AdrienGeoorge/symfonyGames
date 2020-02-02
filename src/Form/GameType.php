@@ -42,7 +42,9 @@
                     'expanded'     => true,
                     'multiple'     => true,
                 ])
-				->add('submit', SubmitType::class);
+				->add('submit', SubmitType::class, [
+                    'attr' => ['class' => 'btn-secondary']
+                ]);
 		}
 
 		public function configureOptions(OptionsResolver $resolver)

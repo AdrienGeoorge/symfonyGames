@@ -3,22 +3,29 @@
 {% block title %}Hello EditorController!{% endblock %}
 
 {% block body %}
-    {% for editor in editors %}
-        {{ editor.buisnessName }}
-        {{ editor.nationality }}
+    <h1>Editors</h1>
+    <div class="grid-3">
+        {% for editor in editors %}
+            <div class="box">
+                <h5>{{ editor.buisnessName }}</h5>
+                <p>Nationality : {{ editor.nationality }}</p>
 
-        {% if is_granted('ROLE_USER') %}
-            <a href="{{ path('editor_infos', {'id': editor.id}) }}">More infos</a>
-        {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('editor_infos', {'id': editor.id}) }}" class="btn btn-primary">More infos</a>
+                {% endif %}
 
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('editor_edit', {'id': editor.id}) }}">Edit</a>
-            <a href="{{ path('editor_delete', {'id': editor.id}) }}">Delete</a>
-        {% endif %}
-    {% endfor %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('editor_edit', {'id': editor.id}) }}" class="btn btn-secondary">Edit</a>
+                    <a href="{{ path('editor_delete', {'id': editor.id}) }}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 
     {% if is_granted("ROLE_ADMIN") %}
-        <a href="{{ path('editor_new') }}">Add new editor</a>
+        <div class="text-center mt-3">
+            <a href="{{ path('editor_new') }}" class="btn btn-dark">Add new editor</a>
+        </div>
     {% endif %}
 
 {% endblock %}

@@ -28,10 +28,10 @@
                                 <a class="nav-link" href="{{ path("editor_list") }}">Editor</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path("favorite") }}">My favorites </a>
+                                <a class="nav-link" href="{{ path("favorite") }}">My favorites</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path("user_user_edit") }}">User settings </a>
+                                <a class="nav-link" href="{{ path("user_user_edit") }}">My profile</a>
                             </li>
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
@@ -39,7 +39,7 @@
                                 <a class="nav-link" href="{{ path("support_list") }}">Support</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path("admin_list_user") }}">User settings </a>
+                                <a class="nav-link" href="{{ path("admin_list_user") }}">User settings</a>
                             </li>
                         {% endif %}
                         {% if not is_granted('IS_AUTHENTICATED_FULLY')%}

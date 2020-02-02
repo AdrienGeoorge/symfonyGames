@@ -16,7 +16,9 @@ class SupportType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('maker', TextType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => ['class' => 'btn-secondary']
+            ])
         ;
     }
 
